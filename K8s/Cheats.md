@@ -1,4 +1,3 @@
-Certainly! Here are the commands related to the mentioned topics:
 
 ### **Minikube Installation:**
 ```bash
