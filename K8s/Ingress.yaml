@@ -1,0 +1,48 @@
+# Define an Ingress resource
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: my-ingress  # Specify the name of the Ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /  # Annotation for rewriting the URL path
+spec:
+  rules:
+  - host: my-app.com  # Hostname for the Ingress
+    http:
+      paths:
+      - path: /path-prefix  # URL path prefix
+        pathType: Prefix
+        backend:
+          service:
+            name: my-service  # Service to route traffic to
+            port:
+              number: 80  # Port on the service
+
+              
+------------------------------------------------------------------------------------------------------------------------------------
+Explanation:
+
+apiVersion and kind: Specify the API version and kind of the Kubernetes resource. In this case, it's networking.k8s.io/v1 and Ingress.
+
+metadata: Contains metadata about the Ingress, including the name (my-ingress in this case).
+
+annotations: Provide additional configuration or information. In this example, the annotation is used for rewriting the URL path.
+spec: Describes the desired state for the Ingress.
+
+rules: Define host-based routing rules.
+
+host: Specifies the hostname for the Ingress. Requests to this hostname will be handled by this Ingress.
+
+http: Defines HTTP-based routing.
+
+paths: Specify the URL paths and their backend services.
+
+path: The URL path to match.
+
+pathType: Type of matching. In this case, Prefix indicates that the path should be treated as a prefix.
+
+backend: Specifies the backend service to route traffic to.
+
+service: Specifies the name of the service (my-service in this case).
+
+port: Specifies the port on the service to which traffic will be directed (80 in this case).
