@@ -1,0 +1,31 @@
+# Define a PersistentVolume (PV) for Local Storage
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: local-pv  # Specify the name of the PV
+spec:
+  capacity:
+    storage: 10Gi  # Total storage capacity of the PV
+  accessModes:
+    - ReadWriteOnce  # Define the access mode for the PV (single node can read and write)
+  hostPath:
+    path: /path/to/local/storage  # Path on the host machine providing the storage
+    type: DirectoryOrCreate  # Specify the type of the local storage
+------------------------------------------------------------------------------------------------
+Explanation:
+
+apiVersion and kind: Specify the API version and kind of the Kubernetes resource. In this case, it's v1 and PersistentVolume.
+
+metadata: Contains metadata about the PV, including the name (local-pv in this case).
+
+spec: Describes the desired state for the PV.
+
+capacity: Specify the total storage capacity of the PV. In this example, it's set to 10Gi (10 gigabytes).
+
+accessModes: Specify the access mode for the PV. In this case, it's set to ReadWriteOnce, indicating that a single node can read and write.
+
+hostPath: Specify local storage parameters.
+
+path: Specify the path on the host machine providing the storage.
+
+type: Specify the type of the local storage. In this example, it's set to DirectoryOrCreate.
