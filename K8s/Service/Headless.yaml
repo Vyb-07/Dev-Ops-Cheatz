@@ -1,0 +1,13 @@
+# Define a Kubernetes Service with Headless type
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-headless-service  # Specify the name of the Service
+spec:
+  clusterIP: None  # Headless service with no cluster-internal IP
+  selector:
+    app: my-app  # Pods with this label will be part of the service
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080  # Port on the pods to forward traffic to
