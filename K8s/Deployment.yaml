@@ -1,0 +1,35 @@
+# Define the API version and kind of the Kubernetes resource
+apiVersion: apps/v1
+kind: Deployment
+
+# Metadata section contains information about the Deployment
+metadata:
+  # Specify the name of the Deployment
+  name: my-deployment
+
+# Spec section describes the desired state for the Deployment
+spec:
+  # Set the desired number of replicas (pods) to maintain
+  replicas: 3
+  
+  # Selector determines which pods are managed by this Deployment
+  selector:
+    # Match pods based on the specified labels
+    matchLabels:
+      app: my-app
+
+  # Template section defines the pod template for pods created by this Deployment
+  template:
+    metadata:
+      # Labels applied to pods created from this template
+      labels:
+        app: my-app
+    spec:
+      # Container specification for the pod
+      containers:
+      - name: my-container
+        # Docker image for the container
+        image: nginx:latest
+        # Ports that the container exposes
+        ports:
+        - containerPort: 80
