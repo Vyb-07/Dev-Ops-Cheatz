@@ -1,0 +1,17 @@
+# Define a StorageClass for Local Storage
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: local-sc  # Specify the name of the StorageClass
+provisioner: kubernetes.io/no-provisioner  # No dynamic provisioning for local storage
+volumeBindingMode: WaitForFirstConsumer  # Wait for the first PVC to be bound before binding PV
+------------------------------------------------------------------------------------------------
+Explanation:
+
+apiVersion and kind: Specify the API version and kind of the Kubernetes resource. In this case, it's storage.k8s.io/v1 and StorageClass.
+
+metadata: Contains metadata about the StorageClass, including the name (local-sc in this case).
+
+provisioner: Specifies kubernetes.io/no-provisioner to indicate that local storage is not dynamically provisioned.
+
+volumeBindingMode: Specifies the volume binding mode. In this example, it's set to WaitForFirstConsumer, which means that PVs are bound as soon as the first PVC using them is created.
