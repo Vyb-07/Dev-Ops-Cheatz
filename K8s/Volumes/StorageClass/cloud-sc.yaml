@@ -1,0 +1,18 @@
+# Define a StorageClass for Cloud Storage
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: cloud-sc  # Specify the name of the StorageClass
+provisioner: kubernetes.io/aws-ebs  # Provisioner for AWS EBS
+parameters:
+  type: gp2  # Specify the type of AWS EBS volume
+---------------------------------------------------------------
+Explanation:
+
+apiVersion and kind: Specify the API version and kind of the Kubernetes resource. In this case, it's storage.k8s.io/v1 and StorageClass.
+
+metadata: Contains metadata about the StorageClass, including the name (cloud-sc in this case).
+
+provisioner: Specifies kubernetes.io/aws-ebs as the provisioner for AWS EBS.
+
+parameters: Specifies additional parameters for the provisioner. In this example, type is set to gp2 to specify the type of AWS EBS volume.
