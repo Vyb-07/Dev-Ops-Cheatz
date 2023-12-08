@@ -1,0 +1,25 @@
+# Define a PersistentVolumeClaim (PVC) for Local Storage
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: local-pvc  # Specify the name of the PVC
+spec:
+  accessModes:
+    - ReadWriteOnce  # Define the access mode for the PVC (single node can read and write)
+  resources:
+    requests:
+      storage: 10Gi  # Requested storage size for the PVC
+----------------------------------------------------------------------------------------------
+Explanation:
+
+apiVersion and kind: Specify the API version and kind of the Kubernetes resource. In this case, it's v1 and PersistentVolumeClaim.
+
+metadata: Contains metadata about the PVC, including the name (local-pvc in this case).
+
+spec: Describes the desired state for the PVC.
+
+accessModes: Specify the access mode for the PVC. In this example, it's set to ReadWriteOnce, indicating that a single node can read and write.
+
+resources: Define the resource requirements for the PVC.
+
+requests: Specify the requested storage size for the PVC. In this case, it's set to 10Gi (10 gigabytes).
